@@ -6,6 +6,8 @@
   --cap: #fce644;
   --tower: #b7212a;
   --red: #eb2537;
+  /* a touch deeper than --red so white button text meets the 4.5:1 contrast minimum */
+  --red-button: #e3202f;
   --orange: #dd7327;
   --ink: #22203d;
   --cable: #f7f7f2;

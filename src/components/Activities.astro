@@ -12,14 +12,12 @@ import { activities } from "../data/site";
       </p>
     </div>
     <ul>
-      {
-        activities.map((activity) => (
-          <li>
-            <h3>{activity.title}</h3>
-            <p>{activity.text}</p>
-          </li>
-        ))
-      }
+      {activities.map((activity) => (
+        <li>
+          <h3>{activity.title}</h3>
+          <p>{activity.text}</p>
+        </li>
+      ))}
     </ul>
   </div>
 </section>

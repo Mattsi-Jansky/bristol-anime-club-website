@@ -47,7 +47,9 @@ for (let x = 250; x <= 1190; x += 28) {
   <use href="#tower" x="1220" y="86"></use>
 
   <g stroke="var(--cable)" stroke-width="3">
-    {hangers.map((h, i) => <line class="hanger" x1={h.x} x2={h.x} y1={h.y} y2={DECK} style={`--i: ${i}`} />)}
+    {hangers.map((h, i) => (
+      <line class="hanger" x1={h.x} x2={h.x} y1={h.y} y2={DECK} style={`--i: ${i}`} />
+    ))}
   </g>
 
   <!-- main span: two striped chains -->
@@ -63,8 +65,12 @@ for (let x = 250; x <= 1190; x += 28) {
   <rect x="0" y="360" width="1440" height="14" fill="var(--ink)"></rect>
   <rect x="0" y="360" width="1440" height="4" fill="var(--cable)" opacity=".5"></rect>
 
-  <text x="36" y="492" font-size="40" fill="var(--ink)">Bristol</text>
-  <text x="1404" y="492" font-size="40" fill="var(--ink)" text-anchor="end">Beyond</text>
+  <text x="36" y="492" font-size="40" fill="var(--ink)">
+    Bristol
+  </text>
+  <text x="1404" y="492" font-size="40" fill="var(--ink)" text-anchor="end">
+    Beyond
+  </text>
 </svg>
 
 <style>

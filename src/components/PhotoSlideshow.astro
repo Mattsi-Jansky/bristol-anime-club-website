@@ -10,24 +10,22 @@ const sizes = "(min-width: 56rem) 34rem, calc(100vw - 2rem)";
 
 <div class="snap" role="group" aria-roledescription="slideshow" aria-label="Club photos">
   <div class="frame">
-    {
-      photos.map((photo, i) => (
-        <Picture
-          src={photo.src}
-          alt={photo.alt}
-          formats={["avif", "webp"]}
-          widths={[400, 800, 1100]}
-          width={1100}
-          quality="mid"
-          sizes={sizes}
-          class={i === 0 ? "on" : undefined}
-          style={photo.position ? `object-position: ${photo.position}` : undefined}
-          aria-hidden={i === 0 ? undefined : "true"}
-          loading={i === 0 ? "eager" : "lazy"}
-          fetchpriority={i === 0 ? "high" : undefined}
-        />
-      ))
-    }
+    {photos.map((photo, i) => (
+      <Picture
+        src={photo.src}
+        alt={photo.alt}
+        formats={["avif", "webp"]}
+        widths={[400, 600, 800, 1100]}
+        width={1100}
+        quality="mid"
+        sizes={sizes}
+        class={i === 0 ? "on" : undefined}
+        style={photo.position ? `object-position: ${photo.position}` : undefined}
+        aria-hidden={i === 0 ? undefined : "true"}
+        loading={i === 0 ? "eager" : "lazy"}
+        fetchpriority={i === 0 ? "high" : "low"}
+      />
+    ))}
     <button type="button" data-playing="true" aria-label="Pause photos">
       <svg class="pause" viewBox="0 0 16 16" aria-hidden="true">
         <rect x="2" y="1" width="4" height="14" rx="1" fill="currentColor"></rect>

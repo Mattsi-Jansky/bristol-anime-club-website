@@ -1,0 +1,35 @@
+# Netlify build and hosting settings. Netlify reads this on every deploy.
+# The Node version comes from .nvmrc.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Fail a deploy, before it goes live, if the built page's Lighthouse scores drop
+# below these. Netlify installs this plugin itself; it isn't a project dependency.
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+  [plugins.inputs]
+    fail_deploy_on_score_thresholds = "true"
+
+  [plugins.inputs.thresholds]
+    performance = 0.85
+    accessibility = 0.95
+    best-practices = 0.95
+    seo = 0.95
+
+# Files in /_astro/ have a content hash in their name, so they never change:
+# browsers can keep them for a year.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"

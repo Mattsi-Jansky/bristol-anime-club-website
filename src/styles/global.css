@@ -61,7 +61,7 @@ a {
   box-shadow: 2px 2px 0 var(--ink);
 }
 .btn--red {
-  background: var(--red);
+  background: var(--red-button);
   color: #fff;
 }
 .btn--yellow {

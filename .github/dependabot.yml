@@ -1,0 +1,16 @@
+# Weekly pull requests to keep dependencies up to date. Each one gets a Netlify
+# deploy preview, so you can check the site before merging.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      # One PR for all the small updates, rather than one per package.
+      minor-and-patch:
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

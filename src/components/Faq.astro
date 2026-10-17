@@ -7,17 +7,18 @@ import { faq, links } from "../data/site";
   <div class="wrap">
     <div class="intro">
       <h2 id="faq-title">New to the club?</h2>
-      <p>The things people usually ask before their first meetup. Anything else, just ask on <a href={links.discord}>our Discord</a>.</p>
+      <p>
+        The things people usually ask before their first meetup. Anything else, just ask on{" "}
+        <a href={links.discord}>our Discord</a>.
+      </p>
     </div>
     <div class="questions">
-      {
-        faq.map((item) => (
-          <div class="item">
-            <h3>{item.question}</h3>
-            <p>{item.answer}</p>
-          </div>
-        ))
-      }
+      {faq.map((item) => (
+        <div class="item">
+          <h3>{item.question}</h3>
+          <p>{item.answer}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>
