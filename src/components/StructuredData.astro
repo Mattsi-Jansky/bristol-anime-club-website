@@ -1,0 +1,46 @@
+---
+// Structured data (JSON-LD) telling search engines what this site is: a club in
+// Bristol, its logo, and its profiles elsewhere. The page can add its own items,
+// such as the FAQ, through the `extra` prop.
+import { site, links } from "../data/site";
+
+interface Props {
+  extra?: object[];
+}
+
+const { extra = [] } = Astro.props;
+const home = new URL("/", site.url).href;
+
+const graph = [
+  {
+    "@type": "WebSite",
+    "@id": `${home}#website`,
+    url: home,
+    name: site.searchName,
+    alternateName: site.name,
+    inLanguage: "en-GB",
+  },
+  {
+    "@type": "Organization",
+    "@id": `${home}#club`,
+    name: site.name,
+    alternateName: site.searchName,
+    url: home,
+    logo: new URL("/logo-512.png", site.url).href,
+    image: new URL("/og-image.jpg", site.url).href,
+    description: site.description,
+    areaServed: { "@type": "City", name: "Bristol" },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bristol",
+      addressCountry: "GB",
+    },
+    sameAs: [links.facebook, links.patreon, links.socialGuide],
+  },
+  ...extra,
+];
+
+const json = JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
+---
+
+<script is:inline type="application/ld+json" set:html={json} />

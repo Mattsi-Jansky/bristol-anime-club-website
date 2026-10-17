@@ -3,16 +3,28 @@ import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Activities from "../components/Activities.astro";
+import Faq from "../components/Faq.astro";
 import Tsuzuku from "../components/Tsuzuku.astro";
 import Footer from "../components/Footer.astro";
-import { site } from "../data/site";
+import { site, faq } from "../data/site";
+
+// The FAQ as structured data, matching the visible "New to the club?" section.
+const faqData = {
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
 ---
 
-<Base title={site.title} description={site.description}>
+<Base title={site.title} description={site.description} structuredData={[faqData]}>
   <Header />
   <main>
     <Hero />
     <Activities />
+    <Faq />
     <Tsuzuku />
   </main>
   <Footer />

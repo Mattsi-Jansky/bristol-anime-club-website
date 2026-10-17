@@ -1,0 +1,69 @@
+---
+// Answers for newcomers. The questions themselves live in src/data/site.ts.
+import { faq, links } from "../data/site";
+---
+
+<section class="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="intro">
+      <h2 id="faq-title">New to the club?</h2>
+      <p>The things people usually ask before their first meetup. Anything else, just ask on <a href={links.discord}>our Discord</a>.</p>
+    </div>
+    <div class="questions">
+      {
+        faq.map((item) => (
+          <div class="item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--sky);
+    padding-block: clamp(3rem, 7vw, 6rem);
+  }
+  .wrap {
+    display: grid;
+    gap: 2rem 4rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @media (min-width: 52rem) {
+    .wrap {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+  }
+  h2 {
+    margin: 0;
+    font: 400 clamp(2.4rem, 5.5vw, 3.75rem) / 1 var(--display);
+    /* tower red: 3.1:1 on the sky, enough for text this large */
+    color: var(--tower);
+    text-wrap: balance;
+  }
+  .intro p {
+    max-width: 26em;
+  }
+  .item {
+    padding-block: 1.25rem;
+    /* the same striped cable divider as the activities list */
+    background:
+      linear-gradient(var(--ink), var(--ink)) top / 100% 3px no-repeat,
+      linear-gradient(var(--cable), var(--cable)) 0 5px / 100% 3px no-repeat;
+  }
+  .item:first-child {
+    padding-top: 0;
+    background: none;
+  }
+  h3 {
+    margin: 0 0 0.2rem;
+    font: 400 1.6rem/1.15 var(--display);
+  }
+  .item p {
+    margin: 0;
+    max-width: 36em;
+  }
+</style>
