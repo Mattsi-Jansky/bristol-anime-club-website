@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # netlify cli
 .netlify/
+
+# logo build fonts (large; see tools/logo/README.md)
+tools/logo/fonts/
