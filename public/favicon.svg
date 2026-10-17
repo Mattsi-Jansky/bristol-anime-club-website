@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Simplified club logo for browser tabs: the tower "A" in the yellow ring,
+       without the cables and lettering that disappear at small sizes. -->
+  <circle cx="32" cy="32" r="32" fill="#f3d038"/>
+  <circle cx="32" cy="32" r="27.5" fill="#7cbdd9"/>
+  <!-- outline on the back of each leg, as in the full logo -->
+  <path d="M16.5,53 Q16.3,35 21,19 L45,19 Q49.5,35 50.5,53 L39,53 L38.6,31 C38.6,26 36,24 33.5,24 C31,24 28.4,26 28.4,31 L28,53 Z" fill="#22203d" transform="translate(-1.5 1.5)"/>
+  <!-- tower body with the arch cut out -->
+  <path d="M16.5,53 Q16.3,35 21,19 L45,19 Q49.5,35 50.5,53 L39,53 L38.6,31 C38.6,26 36,24 33.5,24 C31,24 28.4,26 28.4,31 L28,53 Z" fill="#b7212a"/>
+  <!-- lit left face -->
+  <path d="M16.5,53 Q16.3,35 21,19 L24,19 Q20.5,35 20,53 Z" fill="#eb2537"/>
+  <!-- orange inner wall, seen through the arch -->
+  <path d="M33.5,24 C36,24 38.6,26 38.6,31 L39,53 L34.5,53 L34.3,30 C34.3,27 33.8,25 33.5,24 Z" fill="#dd7327"/>
+  <!-- crossbar and its underside -->
+  <rect x="28.2" y="35" width="10.6" height="4" fill="#b7212a"/>
+  <path d="M28.2,39 L38.8,39 L34.4,41 L28.2,41 Z" fill="#eb2537"/>
+  <!-- cap: brick band and roof -->
+  <rect x="20.5" y="13.5" width="25" height="6" fill="#dd7327"/>
+  <rect x="23" y="15" width="4" height="3" rx=".6" fill="#f6c27e"/>
+  <rect x="31" y="15" width="4" height="3" rx=".6" fill="#f6c27e"/>
+  <rect x="39" y="15" width="4" height="3" rx=".6" fill="#f6c27e"/>
+  <rect x="18.5" y="9.5" width="29" height="4.5" fill="#fce644"/>
+  <path d="M18.5,14 L47.5,14 L46,15 L20,15 Z" fill="#c99a22"/>
+</svg>
