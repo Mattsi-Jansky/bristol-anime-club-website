@@ -1,0 +1,17 @@
+/* Colours and fonts used across the site. The palette comes from the club logo. */
+:root {
+  --sky: #7cbdd9;
+  --sky-deep: #4f97b8;
+  --ring: #f3d038;
+  --cap: #fce644;
+  --tower: #b7212a;
+  --red: #eb2537;
+  --orange: #dd7327;
+  --ink: #22203d;
+  --cable: #f7f7f2;
+  --stripe: #b9c6cf;
+
+  --display: "Lilita One", "Arial Rounded MT Bold", sans-serif;
+  --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --japanese: "Dela Gothic One", var(--display);
+}

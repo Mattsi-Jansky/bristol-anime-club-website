@@ -1,0 +1,131 @@
+---
+// Club photos, pinned up beside the title, crossfading from one to the next.
+// The photos and their order live in src/data/site.ts.
+import { Picture } from "astro:assets";
+import { photos } from "../data/site";
+
+// The frame is at most 34rem wide; on phones it fills the column.
+const sizes = "(min-width: 56rem) 34rem, calc(100vw - 2rem)";
+---
+
+<div class="snap" role="group" aria-roledescription="slideshow" aria-label="Club photos">
+  <div class="frame">
+    {
+      photos.map((photo, i) => (
+        <Picture
+          src={photo.src}
+          alt={photo.alt}
+          formats={["avif", "webp"]}
+          widths={[400, 800, 1100]}
+          width={1100}
+          quality="mid"
+          sizes={sizes}
+          class={i === 0 ? "on" : undefined}
+          style={photo.position ? `object-position: ${photo.position}` : undefined}
+          aria-hidden={i === 0 ? undefined : "true"}
+          loading={i === 0 ? "eager" : "lazy"}
+          fetchpriority={i === 0 ? "high" : undefined}
+        />
+      ))
+    }
+    <button type="button" data-playing="true" aria-label="Pause photos">
+      <svg class="pause" viewBox="0 0 16 16" aria-hidden="true">
+        <rect x="2" y="1" width="4" height="14" rx="1" fill="currentColor"></rect>
+        <rect x="10" y="1" width="4" height="14" rx="1" fill="currentColor"></rect>
+      </svg>
+      <svg class="play" viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M3 1.5v13l11-6.5z" fill="currentColor"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  .snap {
+    grid-area: snap;
+    align-self: center;
+    justify-self: center;
+    width: min(100%, 34rem);
+    margin: 0;
+    rotate: 1.5deg;
+  }
+  .frame {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 4px solid var(--ink);
+    border-radius: 18px;
+    box-shadow: 8px 8px 0 var(--ink);
+    background: var(--ink);
+  }
+  .frame :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 700ms ease;
+  }
+  .frame :global(img.on) {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .frame :global(img) {
+      transition: none;
+    }
+  }
+  button {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    background: var(--cap);
+    color: var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    cursor: pointer;
+  }
+  button svg {
+    width: 16px;
+    height: 16px;
+  }
+  button[data-playing="true"] .play,
+  button[data-playing="false"] .pause {
+    display: none;
+  }
+</style>
+
+<script>
+  // Crossfade every 4.5s; starts paused for people who prefer reduced motion.
+  const slides = [...document.querySelectorAll<HTMLImageElement>(".snap .frame img")];
+  const toggle = document.querySelector<HTMLButtonElement>(".snap button");
+
+  if (slides.length > 1 && toggle) {
+    let current = 0;
+    let timer: ReturnType<typeof setInterval> | undefined;
+
+    const show = (n: number) => {
+      slides[current].classList.remove("on");
+      slides[current].setAttribute("aria-hidden", "true");
+      current = n % slides.length;
+      slides[current].classList.add("on");
+      slides[current].removeAttribute("aria-hidden");
+    };
+
+    const setPlaying = (on: boolean) => {
+      clearInterval(timer);
+      timer = on ? setInterval(() => show(current + 1), 4500) : undefined;
+      toggle.dataset.playing = String(on);
+      toggle.setAttribute("aria-label", on ? "Pause photos" : "Play photos");
+    };
+
+    toggle.addEventListener("click", () => setPlaying(timer === undefined));
+    setPlaying(!matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+</script>

@@ -1,0 +1,47 @@
+---
+// The page shell: <head>, fonts and global styles. Every page renders inside this.
+import "@fontsource/lilita-one/400.css";
+import "@fontsource/atkinson-hyperlegible/400.css";
+import "../styles/tokens.css";
+import "../styles/global.css";
+
+// Preloaded so the headline and body text don't flash in a fallback font.
+import lilitaLatin from "@fontsource/lilita-one/files/lilita-one-latin-400-normal.woff2?url";
+import atkinsonLatin from "@fontsource/atkinson-hyperlegible/files/atkinson-hyperlegible-latin-400-normal.woff2?url";
+// The only Japanese text styled in Dela Gothic One is つづく, which lives in this one
+// 13KB kana chunk, so the face is declared with just that file rather than the full set.
+import delaKana from "@fontsource/dela-gothic-one/files/dela-gothic-one-119-400-normal.woff2?url";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const delaFace = `@font-face {
+  font-family: "Dela Gothic One";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(${delaKana}) format("woff2");
+  unicode-range: U+3041-309F;
+}`;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+    <link rel="preload" href={lilitaLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={atkinsonLatin} as="font" type="font/woff2" crossorigin />
+    <style is:inline set:html={delaFace}></style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

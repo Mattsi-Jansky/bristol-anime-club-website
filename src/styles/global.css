@@ -1,0 +1,75 @@
+/* Base styles and the few pieces shared by several sections. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--sky);
+  color: var(--ink);
+  font: 400 1.125rem/1.55 var(--body);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 4px solid var(--ink);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Centred content column */
+.wrap {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+
+/* Buttons share the logo's hard offset shadow */
+.btn {
+  display: inline-block;
+  font: 400 1.25rem/1 var(--display);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  padding: 1rem 1.6rem 0.95rem;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 5px 5px 0 var(--ink);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--ink);
+}
+.btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.btn--red {
+  background: var(--red);
+  color: #fff;
+}
+.btn--yellow {
+  background: var(--ring);
+  color: var(--ink);
+}
+.btn--small {
+  font-size: 1rem;
+  padding: 0.7rem 1.1rem 0.65rem;
+  box-shadow: 3px 3px 0 var(--ink);
+}

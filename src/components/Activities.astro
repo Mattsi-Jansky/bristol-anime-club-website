@@ -1,0 +1,76 @@
+---
+import { activities } from "../data/site";
+---
+
+<section class="doings" aria-labelledby="doings-title">
+  <div class="wrap">
+    <div class="intro">
+      <h2 id="doings-title">What we get up to</h2>
+      <p>
+        Come for the anime, stay because it turns out you like these people. Newcomers turn up on their own all the
+        time, and someone will always say hello.
+      </p>
+    </div>
+    <ul>
+      {
+        activities.map((activity) => (
+          <li>
+            <h3>{activity.title}</h3>
+            <p>{activity.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .doings {
+    background: var(--ring);
+    padding-block: clamp(3rem, 7vw, 6rem);
+  }
+  .wrap {
+    display: grid;
+    gap: 2rem 4rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @media (min-width: 52rem) {
+    .wrap {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+  }
+  h2 {
+    margin: 0;
+    font: 400 clamp(2.4rem, 5.5vw, 3.75rem) / 1 var(--display);
+    color: var(--tower);
+    text-wrap: balance;
+  }
+  .intro p {
+    max-width: 26em;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    padding-block: 1.25rem;
+    /* striped cable divider, lifted from the logo */
+    background:
+      linear-gradient(var(--ink), var(--ink)) top / 100% 3px no-repeat,
+      linear-gradient(var(--cable), var(--cable)) 0 5px / 100% 3px no-repeat;
+  }
+  li:first-child {
+    padding-top: 0;
+    background: none;
+  }
+  h3 {
+    margin: 0 0 0.2rem;
+    font: 400 1.6rem/1.15 var(--display);
+    color: var(--ink);
+  }
+  li p {
+    margin: 0;
+    max-width: 36em;
+  }
+</style>

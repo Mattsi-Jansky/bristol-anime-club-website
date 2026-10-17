@@ -1,0 +1,59 @@
+---
+// The closing call to action. つづく means "to be continued", as at the end of a manga chapter.
+import { links } from "../data/site";
+---
+
+<section class="tbc" aria-labelledby="tbc-title">
+  <div class="wrap">
+    <p class="tsuzuku" lang="ja" aria-hidden="true">つづく</p>
+    <div>
+      <h2 id="tbc-title">To be continued on Discord</h2>
+      <p>
+        Meetup plans, watch party times and general chat all happen on our Discord. Join, say hello, and come along to
+        the next one.
+      </p>
+      <a class="btn btn--yellow" href={links.discord}>Join our Discord</a>
+      <p class="small">
+        Over-18s only. Want to help pay for venues and screenings? <a href={links.patreon}>Support us on Patreon</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tbc {
+    background: var(--tower);
+    color: #fff;
+    padding-block: clamp(3.5rem, 8vw, 6.5rem);
+  }
+  .wrap {
+    display: grid;
+    gap: 1.5rem 4rem;
+    align-items: center;
+  }
+  @media (min-width: 52rem) {
+    .wrap {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+  }
+  .tsuzuku {
+    margin: 0;
+    font: 400 clamp(4rem, 12vw, 9rem) / 1 var(--japanese);
+    color: var(--ring);
+    text-shadow: 0.05em 0.05em 0 var(--ink);
+  }
+  h2 {
+    margin: 0;
+    font: 400 clamp(1.8rem, 4vw, 2.6rem) / 1.15 var(--display);
+    text-wrap: balance;
+  }
+  p {
+    max-width: 32em;
+    margin: 1rem 0 1.75rem;
+    font-size: 1.2rem;
+  }
+  .small {
+    font-size: 1rem;
+    margin: 1.5rem 0 0;
+  }
+</style>

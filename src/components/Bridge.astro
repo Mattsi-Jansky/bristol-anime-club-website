@@ -1,0 +1,101 @@
+---
+// The Clifton Suspension Bridge across the bottom of the hero: Bristol on the
+// left, Beyond on the right. Purely decorative, so hidden from screen readers.
+
+// Vertical hangers from the lower main chain down to the deck, worked out here at
+// build time. The chain is the quadratic curve 220,112 → (720,536) → 1220,112.
+const DECK = 360;
+const hangers: { x: number; y: number }[] = [];
+for (let x = 250; x <= 1190; x += 28) {
+  const t = (x - 220) / 1000;
+  const y = (1 - t) ** 2 * 112 + 2 * t * (1 - t) * 536 + t ** 2 * 112;
+  if (DECK - y >= 8) hangers.push({ x, y: Math.round(y * 10) / 10 });
+}
+---
+
+<svg class="bridge" viewBox="0 0 1440 520" preserveAspectRatio="xMinYMax slice" aria-hidden="true">
+  <defs>
+    <g id="tower">
+      <!-- hard ink offset, like the logo -->
+      <path d="M-59,350 L-47,2 L59,2 L71,350 Z" fill="var(--ink)" transform="translate(7 7)"></path>
+      <path d="M-65,350 L-53,0 L53,0 L65,350 Z" fill="var(--tower)"></path>
+      <path d="M-65,350 L-53,0 L-36,0 L-44,350 Z" fill="var(--red)"></path>
+      <path d="M-30,350 L-26,120 Q0,72 26,120 L30,350 Z" fill="var(--orange)"></path>
+      <path d="M-30,350 L-26,120 Q-6,86 12,104 L14,350 Z" fill="var(--sky)"></path>
+      <rect x="-58" y="-26" width="116" height="28" fill="var(--orange)"></rect>
+      <rect x="-50" y="-20" width="18" height="16" fill="var(--cap)" opacity=".7"></rect>
+      <rect x="-12" y="-20" width="24" height="16" fill="var(--cap)" opacity=".7"></rect>
+      <rect x="32" y="-20" width="18" height="16" fill="var(--cap)" opacity=".7"></rect>
+      <path d="M-66,-26 L-60,-46 L60,-46 L66,-26 Z" fill="var(--cap)" stroke="var(--ring)" stroke-width="3"></path>
+    </g>
+  </defs>
+
+  <!-- gorge: the cliffs are the next section's yellow, with the river between them -->
+  <path d="M508,500 L932,500 L860,520 L580,520 Z" fill="var(--sky-deep)"></path>
+  <path d="M0,440 L320,436 L360,452 L420,470 L470,486 L580,520 L0,520 Z" fill="var(--ring)"></path>
+  <path d="M1440,440 L1120,436 L1080,452 L1020,470 L970,486 L860,520 L1440,520 Z" fill="var(--ring)"></path>
+
+  <!-- outer spans: two chains each side, continuing the main span's pair over the towers -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M-20,356 Q100,176 220,96 M1220,96 Q1340,176 1460,356" stroke="var(--cable)" stroke-width="10"></path>
+    <path d="M-20,356 Q100,176 220,96 M1220,96 Q1340,176 1460,356" stroke="var(--stripe)" stroke-width="2"></path>
+    <path d="M-20,372 Q100,192 220,112 M1220,112 Q1340,192 1460,372" stroke="var(--cable)" stroke-width="10"></path>
+    <path d="M-20,372 Q100,192 220,112 M1220,112 Q1340,192 1460,372" stroke="var(--stripe)" stroke-width="2"></path>
+  </g>
+
+  <use href="#tower" x="220" y="86"></use>
+  <use href="#tower" x="1220" y="86"></use>
+
+  <g stroke="var(--cable)" stroke-width="3">
+    {hangers.map((h, i) => <line class="hanger" x1={h.x} x2={h.x} y1={h.y} y2={DECK} style={`--i: ${i}`} />)}
+  </g>
+
+  <!-- main span: two striped chains -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M220,96 Q720,520 1220,96" stroke="var(--cable)" stroke-width="10"></path>
+    <path d="M220,96 Q720,520 1220,96" stroke="var(--stripe)" stroke-width="2"></path>
+    <path d="M220,112 Q720,536 1220,112" stroke="var(--cable)" stroke-width="10"></path>
+    <path d="M220,112 Q720,536 1220,112" stroke="var(--stripe)" stroke-width="2"></path>
+  </g>
+
+  <!-- deck -->
+  <rect x="0" y="366" width="1440" height="7" fill="var(--ink)" transform="translate(0 6)"></rect>
+  <rect x="0" y="360" width="1440" height="14" fill="var(--ink)"></rect>
+  <rect x="0" y="360" width="1440" height="4" fill="var(--cable)" opacity=".5"></rect>
+
+  <text x="36" y="492" font-size="40" fill="var(--ink)">Bristol</text>
+  <text x="1404" y="492" font-size="40" fill="var(--ink)" text-anchor="end">Beyond</text>
+</svg>
+
+<style>
+  .bridge {
+    width: 100%;
+    /* match the 1440×520 viewBox so the whole bridge fits at any width; below ~640px it crops to one tower */
+    height: max(230px, 100vw * 520 / 1440);
+    margin-top: clamp(1rem, 3vw, 2rem);
+    margin-bottom: -1px;
+  }
+  text {
+    font-family: var(--display);
+  }
+
+  /* One orchestrated moment: the hangers drop onto the deck after load */
+  .hanger {
+    transform-box: fill-box;
+    transform-origin: top;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hanger {
+      animation: drop 520ms cubic-bezier(0.3, 1.4, 0.5, 1) both;
+      animation-delay: calc(400ms + var(--i) * 28ms);
+    }
+    @keyframes drop {
+      from {
+        transform: scaleY(0);
+      }
+      to {
+        transform: scaleY(1);
+      }
+    }
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import PhotoSlideshow from "./PhotoSlideshow.astro";
+import Bridge from "./Bridge.astro";
+import { links } from "../data/site";
+---
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <h1>Anime Club <span>Bristol &amp; Beyond</span></h1>
+    <PhotoSlideshow />
+    <div class="copy">
+      <p>
+        A friendly club for adult anime and manga fans. We meet in person around Bristol every other Friday, and our
+        Discord keeps things going in between.
+      </p>
+      <div class="actions">
+        <a class="btn btn--red" href={links.discord}>Join our Discord</a>
+        <span class="note">Free to join. Over-18s only.</span>
+      </div>
+    </div>
+  </div>
+  <Bridge />
+</section>
+
+<style>
+  .hero {
+    padding-top: clamp(1rem, 3vw, 2.5rem);
+  }
+  .hero-grid {
+    display: grid;
+    gap: 1.75rem 4rem;
+    grid-template-areas: "title" "snap" "copy";
+  }
+  @media (min-width: 56rem) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      grid-template-areas: "title snap" "copy snap";
+      align-content: center;
+    }
+    h1 {
+      align-self: end;
+    }
+  }
+  h1 {
+    grid-area: title;
+    margin: 0;
+    font: 400 clamp(3.4rem, 7.4vw, 6.75rem) / 0.9 var(--display);
+    color: var(--red);
+    text-shadow: 0.05em 0.05em 0 var(--ink);
+    letter-spacing: -0.01em;
+  }
+  h1 span {
+    display: block;
+    margin-top: 0.12em;
+    font-size: 0.36em;
+    color: var(--orange);
+    letter-spacing: 0.02em;
+    text-shadow: 0.07em 0.07em 0 var(--ink);
+  }
+  .copy {
+    grid-area: copy;
+  }
+  .copy p {
+    max-width: 30em;
+    margin: 0;
+    font-size: clamp(1.125rem, 2vw, 1.3rem);
+  }
+  .actions {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+  }
+  .note {
+    font-size: 1rem;
+  }
+</style>
