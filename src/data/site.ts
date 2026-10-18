@@ -28,24 +28,24 @@ export type Activity = { title: string; text: string };
 
 export const activities: Activity[] = [
   {
-    title: "Friday meetups",
-    text: "Every other Friday we meet in person around Bristol. Pubs, board game cafés, and walks when the weather behaves.",
+    title: "Friday boardgame meetups",
+    text: "Every other Friday we meet in person in town, to chat and play some games.",
   },
   {
     title: "Watch parties and movie nights",
-    text: "Online on Discord, so you can join in from the sofa.",
+    text: "Run at various fun venues around Bristol, or if one isn't available sometimes online via Discord.",
   },
   {
     title: "Karaoke",
-    text: "Mostly anime openings. Nobody is judging your high notes.",
+    text: "Nobody is judging your high notes.",
   },
   {
     title: "Screenings and premieres",
-    text: "We go together to new anime films in Bristol cinemas, and sometimes book a private screening room.",
+    text: "We go together to catch new film releases in cinema.",
   },
   {
     title: "Conventions",
-    text: "The “beyond” part: group trips to cons in Bristol and London.",
+    text: "Group trips to cons in Bristol, Birmingham, London, and further afield too.",
   },
 ];
 
