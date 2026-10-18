@@ -11,14 +11,12 @@ import boardGames from "../assets/photos/board-games.jpg";
 import pubNight from "../assets/photos/pub-night.jpg";
 
 export const site = {
-  name: "The Anime Club – Bristol & Beyond",
-  // What people type into Google. Used in the page title and as the site name in results.
+  name: "The Anime Club - Bristol & Beyond",
   searchName: "Bristol Anime Club",
   url: "https://bristolanimeclub.co.uk",
   title: "Bristol Anime Club | The Anime Club – Bristol & Beyond",
-  // Shown under the title in search results; keep it under about 160 characters.
   description:
-    "A friendly anime club in Bristol for adults. Meetups every other Friday, watch parties, karaoke, screenings and convention trips. Free to join, over-18s only.",
+    "A friendly anime club in Bristol for adults. Meetups every other Friday, watch parties, karaoke, screenings, and convention trips. Free to join, over-18s only.",
 };
 
 export const links = {
@@ -60,26 +58,26 @@ export const faq: Question[] = [
   {
     question: "When and where do you meet?",
     answer:
-      "Every other Friday, somewhere around Bristol: usually a pub or a board game café, and sometimes a walk. The venue and time for each meetup are posted on our Discord.",
+      "Every other Friday, most often at Shredenhams near Cabot Circus but this can change. Check Discord! The venue and time for each meetup are posted there.",
   },
   {
     question: "How much does it cost?",
-    answer:
-      "Nothing, joining is free. Some members support the club on Patreon, which helps pay for venues, private screenings and bigger events, but that’s entirely optional.",
+    answer: "Nothing, just come along and introduce yourself.",
   },
   {
     question: "Who can join?",
     answer:
-      "Anyone aged 18 or over who enjoys anime or manga, whether you’ve watched hundreds of series or are just getting started.",
+      "Anyone aged 18 or over who enjoys anime or manga, whether you've watched hundreds of series or are just getting started.",
   },
   {
     question: "Do I need to know anyone?",
     answer:
-      "No. It’s a social club, so meeting new people is the point. If it helps, say hello on Discord before your first meetup.",
+      "No. It's a social club, so meeting new people is the point. It can help to say hello on Discord before your first meetup.",
   },
   {
     question: "Do I have to cosplay?",
-    answer: "No. Cosplay is welcome but entirely optional.",
+    answer:
+      "No, of course not! Most meetups have no cosplay, and when it is present it is welcome but entirely optional.",
   },
 ];
 
