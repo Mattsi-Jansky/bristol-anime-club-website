@@ -7,15 +7,15 @@ static site built with [Astro](https://astro.build) and hosted on [Netlify](http
 
 Most edits don't need any code knowledge:
 
-| To change…                                    | Edit                                                                                 |
-| --------------------------------------------- | ------------------------------------------------------------------------------------ |
-| The Discord invite, Facebook or Patreon links | `src/data/site.ts` (`links`)                                                         |
-| The page title or Google description          | `src/data/site.ts` (`site`)                                                          |
-| "What we get up to"                           | `src/data/site.ts` (`activities`)                                                    |
-| "New to the club?" questions                  | `src/data/site.ts` (`faq`)                                                           |
-| Slideshow photos                              | add the photo to `src/assets/photos/`, then list it in `src/data/site.ts` (`photos`) |
-| Colours and fonts                             | `src/styles/tokens.css`                                                              |
-| A section's wording or layout                 | its component in `src/components/`                                                   |
+| To change…                           | Edit                                                                                 |
+| ------------------------------------ | ------------------------------------------------------------------------------------ |
+| The Discord invite or Patreon link   | `src/data/site.ts` (`links`)                                                         |
+| The page title or Google description | `src/data/site.ts` (`site`)                                                          |
+| "What we get up to"                  | `src/data/site.ts` (`activities`)                                                    |
+| "New to the club?" questions         | `src/data/site.ts` (`faq`)                                                           |
+| Slideshow photos                     | add the photo to `src/assets/photos/`, then list it in `src/data/site.ts` (`photos`) |
+| Colours and fonts                    | `src/styles/tokens.css`                                                              |
+| A section's wording or layout        | its component in `src/components/`                                                   |
 
 Small text changes can be made straight on GitHub: open the file, click the pencil icon and commit. Netlify
 rebuilds and publishes the site a minute or two later.

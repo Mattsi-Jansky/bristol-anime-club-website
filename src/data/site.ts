@@ -21,7 +21,6 @@ export const site = {
 
 export const links = {
   discord: "https://discord.com/invite/FNwe9pBDha",
-  facebook: "https://www.facebook.com/groups/1347431179000043/",
   patreon: "https://www.patreon.com/animeclubbristol",
   socialGuide: "https://social.guide/groups/the-anime-club/",
 };
