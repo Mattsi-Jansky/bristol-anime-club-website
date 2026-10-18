@@ -9,7 +9,7 @@ Most edits don't need any code knowledge:
 
 | To change…                           | Edit                                                                                 |
 | ------------------------------------ | ------------------------------------------------------------------------------------ |
-| The Discord invite or Patreon link   | `src/data/site.ts` (`links`)                                                         |
+| The Discord invite                   | `src/data/site.ts` (`links`)                                                         |
 | The page title or Google description | `src/data/site.ts` (`site`)                                                          |
 | "What we get up to"                  | `src/data/site.ts` (`activities`)                                                    |
 | "New to the club?" questions         | `src/data/site.ts` (`faq`)                                                           |
